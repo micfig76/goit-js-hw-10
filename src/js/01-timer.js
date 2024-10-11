@@ -61,9 +61,7 @@ function setTimer({ days, hours, minutes, seconds }) {
     addLeadingZero(seconds);
 }
 
-/*set interval co 0,1s jeżeli interval => 0 wartości ustawiamy na zero to clear interval
-tost: time is up!
-*/
+
 btn.addEventListener('click', () => {
   const interval = setInterval(() => {
     const targetMs = new Date(input.value).getTime();
