@@ -23,9 +23,17 @@ function createNotification(delay, state) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (state === 'fulfilled') {
-        resolve(`Notification created with delay ${delay}ms`);
+        iziToast.success({
+          title: 'Success',
+          message: `Fulfilled promise in ${delay}ms`,
+        });
+        resolve(`Fulfilled promise in ${delay}ms`);
       } else {
-        reject(`Notification rejected with delay ${delay}ms`);
+        iziToast.error({
+          title: 'Error',
+          message: `Rejected promise in ${delay}ms`,
+        });
+        reject(`Rejected promise in ${delay}ms`);
       }
     }, delay);
   });
