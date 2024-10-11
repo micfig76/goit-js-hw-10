@@ -2,15 +2,15 @@ const input = document.querySelector('input#datetime-picker');
 const btn = document.querySelector('button[data-start]');
 
 function validateDate(selectedDate) {
-    const now = Date.now();
-    const selectedTimeStamp = selectedDate.getTime();
-    const isPastDate = selectedTimeStamp < now;
-    if (isPastDate) {
-      btn.disabled = true;
-      alert('Please choose a date in the future');
-    } else {
-      btn.disabled = false;
-    }
+  const now = Date.now();
+  const selectedTimeStamp = selectedDate.getTime();
+  const isPastDate = selectedTimeStamp < now;
+  if (isPastDate) {
+    btn.disabled = true;
+    alert('Please choose a date in the future');
+  } else {
+    btn.disabled = false;
+  }
 }
 
 const options = {
@@ -59,20 +59,20 @@ function setTimer({ days, hours, minutes, seconds }) {
     .padStart(2, '0');
 }
 
-function upDateTimer() {
-  const targetMs = new Date(input.value).getTime();
-  /*set interval co 0,1s jeżeli interval => 0 wartości ustawiamy na zero to clear interval
-  tost: time is up!
-  */
-
-  console.log(targetMs);
-  const timeDif = targetMs - Date.now();
-  const converted = convertMs(timeDif);
-  setTimer(converted);
-}
-
+/*set interval co 0,1s jeżeli interval => 0 wartości ustawiamy na zero to clear interval
+tost: time is up!
+*/
 btn.addEventListener('click', () => {
-  setInterval(() => {
-    upDateTimer();
-  }, 1_000);
+  const interval = setInterval(() => {
+    const targetMs = new Date(input.value).getTime();
+    const timeDif = targetMs - Date.now();
+    if (timeDif <= 0) {
+        clearInterval(interval)
+    }
+    else {
+        const converted = convertMs(timeDif);
+        setTimer(converted); 
+    } 
+    
+      }, 1_000);
 });
