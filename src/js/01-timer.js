@@ -1,3 +1,6 @@
+const input = document.querySelector("input#datetime-picker");
+const btn =
+document.querySelector("button[data-start]");
 
 const options = {
     enableTime: true,
@@ -6,14 +9,26 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         console.log(selectedDates[0]);
+        const selectedDate = selectedDates[0];
+
+        const now = Date.now();
+        const selectedTimeStamp = selectedDate.getTime();
+        const isPastDate = selectedTimeStamp < now;
+        if (isPastDate) {
+            btn.disabled = true;
+            alert("Please choose a date in the future");
+        }
+        else {
+            btn.disabled = false;
+        }
     },
 };
 
-flatpickr("input#datetime-picker", options);
+flatpickr(input, options);
 
-document.querySelector("button[data-start]").addEventListener("click", () => {
-const value = document.querySelector("input#datetime-picker").value;
-const targetMs = new Date(value).getTime();
+btn.addEventListener("click", () => {
+const targetMs = new Date(input.value).getTime();
 console.log(targetMs)        
 });
+
 
