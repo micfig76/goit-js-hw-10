@@ -71,6 +71,9 @@ btn.addEventListener('click', () => {
     if (timeDif <= 0) {
       clearInterval(interval);
       setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      iziToast.info({
+        title: 'The time is up!',
+      });
     } else {
       const converted = convertMs(timeDif);
       setTimer(converted);
