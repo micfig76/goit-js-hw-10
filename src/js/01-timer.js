@@ -1,15 +1,7 @@
 const input = document.querySelector('input#datetime-picker');
 const btn = document.querySelector('button[data-start]');
 
-const options = {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    console.log(selectedDates[0]);
-    const selectedDate = selectedDates[0];
-
+function validateDate(selectedDate) {
     const now = Date.now();
     const selectedTimeStamp = selectedDate.getTime();
     const isPastDate = selectedTimeStamp < now;
@@ -19,6 +11,15 @@ const options = {
     } else {
       btn.disabled = false;
     }
+}
+
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    validateDate(selectedDates[0]);
   },
 };
 
