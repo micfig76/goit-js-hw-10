@@ -43,17 +43,35 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-btn.addEventListener('click', () => {
+function setTimer({ days, hours, minutes, seconds }) {
+  document.querySelector('span.value[data-days]').textContent = days
+    .toString()
+    .padStart(2, '0');
+  document.querySelector('span.value[data-hours]').textContent = hours
+    .toString()
+    .padStart(2, '0');
+  document.querySelector('span.value[data-minutes]').textContent = minutes
+    .toString()
+    .padStart(2, '0');
+  document.querySelector('span.value[data-seconds]').textContent = seconds
+    .toString()
+    .padStart(2, '0');
+}
+
+function upDateTimer() {
   const targetMs = new Date(input.value).getTime();
-/*set interval co 0,5s jeżeli interval => 0 wartości ustawiamy na zero to clear interval
-tost: time is up!
-*/
+  /*set interval co 0,1s jeżeli interval => 0 wartości ustawiamy na zero to clear interval
+  tost: time is up!
+  */
 
   console.log(targetMs);
   const timeDif = targetMs - Date.now();
-  const { days, hours, minutes, seconds } = convertMs(timeDif);
-  document.querySelector('span.value[data-days]').textContent=days; /*padstart*/
-  document.querySelector('span.value[data-hours]').textContent=hours; /*padstart*/
-  document.querySelector('span.value[data-minutes]').textContent=minutes; /*padstart*/
-  document.querySelector('span.value[data-seconds]').textContent=seconds; /*padstart*/
+  const converted = convertMs(timeDif);
+  setTimer(converted);
+}
+
+btn.addEventListener('click', () => {
+  setInterval(() => {
+    upDateTimer();
+  }, 1_000);
 });
