@@ -13,6 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"
     integrity="sha256-321PxS+POvbvWcIVoRZeRmf32q7fTFQJ21bXwTNWREY=" crossorigin="anonymous"></script>
   <script src="./js/01-timer.js" defer></script>
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/01-timer-B9f-0i3X.css">
   <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-DvPDDfy5.css">
 </head>
 
@@ -40,25 +41,26 @@
 
   <main>
     <div class="container">
-      <input type="text" id="datetime-picker" />
-      <button disabled type="button" data-start>Start</button>
-
+      <div class="input-line">
+        <input type="text" id="datetime-picker" />
+        <button disabled type="button" data-start>Start</button>
+      </div>
       <div class="timer">
         <div class="field">
           <span class="value" data-days>00</span>
-          <span class="label">Days</span>
+          <span class="label">DAYS</span>
         </div>
         <div class="field">
           <span class="value" data-hours>00</span>
-          <span class="label">Hours</span>
+          <span class="label">HOURS</span>
         </div>
         <div class="field">
           <span class="value" data-minutes>00</span>
-          <span class="label">Minutes</span>
+          <span class="label">MINUTES</span>
         </div>
         <div class="field">
           <span class="value" data-seconds>00</span>
-          <span class="label">Seconds</span>
+          <span class="label">SECONDS</span>
         </div>
       </div>
     </div>
