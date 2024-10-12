@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    background-color: rgb(245, 245, 245);
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+
+}
+
+input {
+    width: 190px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: white;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+button {
+    border-color: rgb(230, 230, 230);
+    background-color: rgb(230, 230, 230);
+    height: 30px;
+    width: 70px;
+    padding: 4px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.timer {
+    display: flex;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    align-items: center;
+}
+
+.value {
+    font-size: 40px;
+    font-weight: 500;
+}

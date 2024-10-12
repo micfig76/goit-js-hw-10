@@ -1,3 +1,5 @@
+// import "flatpickr/dist/flatpickr.min.css";
+
 const input = document.querySelector('input#datetime-picker');
 const btn = document.querySelector('button[data-start]');
 
@@ -9,6 +11,7 @@ function validateDate(selectedDate) {
     btn.disabled = true;
     iziToast.warning({
       title: 'Please choose a date in the future',
+      position: 'topRight',
     });
   } else {
     btn.disabled = false;
@@ -61,7 +64,6 @@ function setTimer({ days, hours, minutes, seconds }) {
     addLeadingZero(seconds);
 }
 
-
 btn.addEventListener('click', () => {
   const interval = setInterval(() => {
     const targetMs = new Date(input.value).getTime();
@@ -71,6 +73,7 @@ btn.addEventListener('click', () => {
       setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       iziToast.info({
         title: 'The time is up!',
+        position: 'topRight',
       });
     } else {
       const converted = convertMs(timeDif);
