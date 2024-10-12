@@ -9,10 +9,16 @@ form.addEventListener('submit', event => {
 
   createNotification(delay, state)
     .then(() => {
-      console.log('success!');
+      iziToast.success({
+        title: 'Success',
+        message: `Fulfilled promise in ${delay}ms`,
+      });
     })
     .catch(error => {
-      console.error('Error:', error);
+      iziToast.error({
+        title: 'Error',
+        message: `Rejected promise in ${delay}ms`,
+      });
     })
     .finally(() => {
       form.reset();
@@ -23,16 +29,10 @@ function createNotification(delay, state) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (state === 'fulfilled') {
-        iziToast.success({
-          title: 'Success',
-          message: `Fulfilled promise in ${delay}ms`,
-        });
+       
         resolve(`Fulfilled promise in ${delay}ms`);
       } else {
-        iziToast.error({
-          title: 'Error',
-          message: `Rejected promise in ${delay}ms`,
-        });
+       
         reject(`Rejected promise in ${delay}ms`);
       }
     }, delay);
